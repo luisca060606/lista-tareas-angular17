@@ -1,0 +1,46 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">App Lista Tareas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+<div class="container card" style="max-width: 550px;">
+  <table *ngIf="listaTareas.length!=0" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tarea</th>
+      <th scope="col">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tarea of listaTareas; let i=index">
+      <th scope="row">{{ i+1 }}</th>
+      <td>{{ tarea }}</td>
+      <td>
+        <button
+          class="btn btn-danger"
+          (click)="eliminarTarea(i)"
+        >Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  <div class="mb-3">
+    <label for="nuevaTarea" class="form-label">Tarea</label>
+    <input id="nuevaTarea" class="form-control" type="text" placeholder="Nueva tarea" [(ngModel)]='nuevaTarea'>
+  </div>
+<button style="max-width: 50%;" class="btn btn-primary" (click)="agregarTarea()">Agregar Tarea</button><br>
+</div>
+<router-outlet />
